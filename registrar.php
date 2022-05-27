@@ -1,5 +1,6 @@
 <?php
-    include('registrar_handler.php');
+include("conexion.php");
+include('registrar_handler.php');
 ?>
 
 <!DOCTYPE html>
