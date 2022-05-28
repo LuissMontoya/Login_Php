@@ -26,6 +26,11 @@ include('registrar_handler.php');
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text" class="form-control" name="usuario" id="usuario" placeholder="digite el usuario">
+                        <?php if (in_array('<div class="alert alert-danger" role="alert">
+        El nombre debe contener más de cuatro caracteres
+      </div>', $error_Array)) echo '<div class="alert alert-danger" role="alert">
+      El nombre debe contener más de cuatro caracteres
+    </div>'; ?>
                     </div><br>
 
                     <div class="form-group">
