@@ -26,11 +26,11 @@ include('registrar_handler.php');
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text" class="form-control" name="usuario" id="usuario" placeholder="digite el usuario">
-                        <?php if (in_array('<div class="alert alert-danger" role="alert">
-        El nombre debe contener más de cuatro caracteres
-      </div>', $error_Array)) echo '<div class="alert alert-danger" role="alert">
-      El nombre debe contener más de cuatro caracteres
-    </div>'; ?>
+                        <?php if (in_array('<div class="alert alert-danger" role="alert">El nombre debe contener más de cuatro caracteres</div>', $error_Array)) 
+                        echo '<div class="alert alert-danger" role="alert">El nombre debe contener más de cuatro caracteres</div>';
+                        else if (in_array('<div class="alert alert-danger" role="alert"> El usuario ya existe</div>', $error_Array))
+                            echo '<div class="alert alert-danger" role="alert"> El usuario ya existe</div>';
+                        ?>
                     </div><br>
 
                     <div class="form-group">
@@ -41,6 +41,16 @@ include('registrar_handler.php');
                     <div class="form-group">
                         <label for="correo2">Confirmar correo</label>
                         <input type="email" class="form-control" name="correo2" id="correo2" placeholder="usuario@ejemplo.com">
+
+                        <?php if (in_array('<div class="alert alert-danger" role="alert">Los correos no coinciden</div>', $error_Array)) 
+                        echo '<div class="alert alert-danger" role="alert">Los correos no Coinciden</div>';
+                        else if (in_array('<div class="alert alert-danger" role="alert">El correo ya existe!</div>', $error_Array))
+                            echo '<div class="alert alert-danger" role="alert">El correo ya Existe!</div>';
+                        else if (in_array('<div class="alert alert-danger" role="alert">El formato no es válido!</div>', $error_Array))
+                        echo '<div class="alert alert-danger" role="alert">El formato no es válido!</div>';
+
+                        ?>
+
                     </div> <br>
 
                     <div class="form-group">
