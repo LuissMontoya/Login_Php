@@ -26,8 +26,8 @@ include('registrar_handler.php');
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text" class="form-control" name="usuario" id="usuario" placeholder="digite el usuario">
-                        <?php if (in_array('<div class="alert alert-danger" role="alert">El nombre debe contener más de cuatro caracteres</div>', $error_Array)) 
-                        echo '<div class="alert alert-danger" role="alert">El nombre debe contener más de cuatro caracteres</div>';
+                        <?php if (in_array('<div class="alert alert-danger" role="alert">El nombre debe contener más de cuatro caracteres</div>', $error_Array))
+                            echo '<div class="alert alert-danger" role="alert">El nombre debe contener más de cuatro caracteres</div>';
                         else if (in_array('<div class="alert alert-danger" role="alert"> El usuario ya existe</div>', $error_Array))
                             echo '<div class="alert alert-danger" role="alert"> El usuario ya existe</div>';
                         ?>
@@ -42,12 +42,12 @@ include('registrar_handler.php');
                         <label for="correo2">Confirmar correo</label>
                         <input type="email" class="form-control" name="correo2" id="correo2" placeholder="usuario@ejemplo.com">
 
-                        <?php if (in_array('<div class="alert alert-danger" role="alert">Los correos no coinciden</div>', $error_Array)) 
-                        echo '<div class="alert alert-danger" role="alert">Los correos no Coinciden</div>';
+                        <?php if (in_array('<div class="alert alert-danger" role="alert">Los correos no coinciden</div>', $error_Array))
+                            echo '<div class="alert alert-danger" role="alert">Los correos no Coinciden</div>';
                         else if (in_array('<div class="alert alert-danger" role="alert">El correo ya existe!</div>', $error_Array))
                             echo '<div class="alert alert-danger" role="alert">El correo ya Existe!</div>';
                         else if (in_array('<div class="alert alert-danger" role="alert">El formato no es válido!</div>', $error_Array))
-                        echo '<div class="alert alert-danger" role="alert">El formato no es válido!</div>';
+                            echo '<div class="alert alert-danger" role="alert">El formato no es válido!</div>';
 
                         ?>
 
@@ -56,11 +56,20 @@ include('registrar_handler.php');
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" placeholder="contraseña">
+
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="password2">Password</label>
+                        <label for="password2"> Confirmar password</label>
                         <input type="password" class="form-control" name="password2" id="password2" placeholder="contraseña">
+
+                        <?php if (in_array('<div class="alert alert-danger" role="alert">Las contraseñas no coinciden!</div>', $error_Array))
+                            echo '<div class="alert alert-danger" role="alert">Las contraseñas no coinciden!</div>';
+                        else if (in_array('<div class="alert alert-danger" role="alert">La contraseña debe tener más de cuatro caracteres</div>', $error_Array))
+                            echo '<div class="alert alert-danger" role="alert">La contraseña debe tener más de cuatro caracteres</div>'
+                        ?>
+
+
                     </div>
 
                     <br>
@@ -72,9 +81,33 @@ include('registrar_handler.php');
         </div>
     </div>
 
+ 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#correo").bind("cut copy paste", function(e) {
+                e.preventDefault();
+                alert('No se puede cortar, copiar o pegar');
+                $("#correo").bind("contextmenu", function(e) {
+                    e.preventDefault();
+                });
+            });
+
+            $("#correo2").bind("cut copy paste", function(e) {
+                e.preventDefault();
+                alert('No se puede cortar, copiar o pegar');
+                $("#correo2").bind("contextmenu", function(e) {
+                    e.preventDefault(); //quitar menu dando click derecho
+                });
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

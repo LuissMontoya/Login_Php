@@ -31,4 +31,14 @@ if (isset($_POST['registrar'])) {
       array_push($error_Array, '<div class="alert alert-danger" role="alert">El formato no es válido!</div>');
     }
   }
+
+  if ($password != $password2) {
+    array_push($error_Array, '<div class="alert alert-danger" role="alert">Las contraseñas no coinciden!</div>');
+  }
+  if (strlen($password) > 50 || strlen($password) < 4) {
+    array_push($error_Array, '<div class="alert alert-danger" role="alert">La contraseña debe tener más de cuatro caracteres</div>');
+  }
+  if (empty($error_Array)) {
+    echo '<div class="alert alert-success" role="alert"> Felicidades! Inicia Sesión </div>';
+  }
 }
